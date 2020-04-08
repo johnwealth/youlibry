@@ -1,0 +1,764 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!-- Sidebar -->
+<ul class="sidebar navbar-nav">
+<li class="nav-item active">
+    <a class="nav-link" href="{{url_for('home')}}">
+    <i class="fas fa-fw fa-home"></i>
+    <span>Home</span>
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{url_for('trending')}}">
+    <i class="fas fa-fw fa-signal"></i>
+    <span>Trending</span>
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{url_for('libraries')}}">
+    <i class="fas fa-fw fa-users"></i>
+    <span>Libraries</span>
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{url_for('categories')}}">
+    <i class="fas fa-list-alt"></i>
+    <span>Categories</span>
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{url_for('live')}}">
+    <i class="fas fa-fw fa-video"></i>
+    <span>Live Classroom</span>
+    </a>
+</li>
+<li class="nav-item channel-sidebar-list">
+<li class="nav-item">
+    <a class="nav-link" href="{{url_for('historypage')}}">
+    <i class="fas fa-fw fa-history"></i>
+    <span>History Page</span>
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{url_for('upload')}}">
+    <i class="fas fa-fw fa-cloud-upload-alt"></i>
+    <span>Upload Content</span>
+    </a>
+</li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-fw fa-user-circle"></i>
+    <span>My Library</span>
+    </a>
+    <div class="dropdown-menu">
+        <h6 class="dropdown-header">Osahan</h6>
+        <a class="dropdown-item" href="{{url_for('account')}}">Account</a>
+        <a class="dropdown-item" href="{{url_for('settings')}}">Settings</a>
+        <div class="dropdown-divider"></div>
+        <h6 class="dropdown-header">Libraries:</h6>
+        <a class="dropdown-item" href="{{url_for('library_account')}}">Health Centre</a>
+        <a class="dropdown-item" href="{{url_for('library_account')}}">Math Clinic</a>
+        <a class="dropdown-item" href="{{url_for('library_account')}}">Let's Tute</a>
+    </div>
+</li>
+
+</li>
+<li class="nav-item channel-sidebar-list">
+    <h6>SUBSCRIPTIONS</h6>
+    <ul>
+        <li>
+            <a href="{{url_for('library')}}">
+            <img class="img-fluid" alt="" src="{{url_for('static', filename='img/library/teachers pet logo.jpg')}}"> Teacher's Pet 
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('library')}}">
+            <img class="img-fluid" alt="" src="{{url_for('static', filename='img/library/toppr.jpg')}}"> Toppr  <span class="badge badge-warning">2</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('library')}}">
+            <img class="img-fluid" alt="" src="{{url_for('static', filename='img/library/khan academy logo.jpg')}}"> Khan Academy  
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('subscriptions')}}">
+            <i class="fas fa-fw fa-list-alt"> </i>   More Subscriptions... 
+            </a>
+        </li>
+    </ul>
+</li>
+<li class="nav-item channel-sidebar-list">
+    <h6>YouLibry Collection</h6>
+    
+    <ul>
+        <li>
+            <a href="{{url_for('course_category')}}">
+            <img class="img-fluid" alt="" src="{{url_for('static', filename='img/collection/Primary.png')}}"> Basic &amp; Primary Education
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('course_category')}}">
+            <img class="img-fluid" alt="" src="{{url_for('static', filename='img/collection/High Sch.png')}}"> High School Education  <span class="badge badge-warning">2</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('course_category')}}">
+            <img class="img-fluid" alt="" src="{{url_for('static', filename='img/collection/Tertiary.png')}}"> Tertiary Education  
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('course_category')}}">
+            <img class="img-fluid" alt="" src="{{url_for('static', filename='img/collection/Prof.png')}}">  Professional Studies
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('course_category')}}">
+            <img class="img-fluid" alt="" src="{{url_for('static', filename='img/collection/vocation.png')}}"> Vocational Education
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('course_category')}}">
+            <img class="img-fluid" alt="" src="{{url_for('static', filename='img/collection/Research.png')}}"> Research Works  <span class="badge badge-warning">2</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('course_category')}}">
+            <img class="img-fluid" alt="" src="{{url_for('static', filename='img/collection/Exam.png')}}"> Exam Preparation
+            </a>
+        </li>
+    </ul>
+</li>
+<li class="nav-item channel-sidebar-list">
+            <!--<div class="app">
+                <a href="#"><img alt="" src="img/google.png"></a>
+                <a href="#"><img alt="" src="img/apple.png"></a>
+            </div>--> 
+            <p class="mt-1 mb-0">&copy; Copyright 2020 <strong class="text-right">YouLibry</strong>. All Rights Reserved<br>
+                <!--<small class="mt-0 mb-0">Made with <i class="fas fa-heart text-danger"></i> by <a class="text-primary" target="_blank" href="https://askbootstrap.com/">Ask Bootstrap</a>
+                </small>-->
+            </p>
+</li>
+</ul>
+<div id="content-wrapper">
+<div class="container-fluid pb-0">
+    <div class="top-mobile-search">
+        <div class="row">
+            <div class="col-md-12">   
+            <form class="mobile-search">
+                <div class="input-group">
+                    <input type="text" placeholder="Search for..." class="form-control">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-dark"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>   
+            </div>
+        </div>
+    </div>
+    <div class="top-category section-padding mb-4">
+        <div class="row">
+            <div class="col-md-12">
+            <div class="main-title">
+                <div class="btn-group float-right right-action">
+                    <a href="#" class="right-action-link text-gray" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star"></i> &nbsp; Top Rated</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-signal"></i> &nbsp; Viewed</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-check-circle"></i> &nbsp; Recommended</a>
+                    </div>
+                </div>
+                <h6>Popular Course Categories</h6>
+            </div>
+            </div>
+            <div class="col-md-12">
+            <div class="owl-carousel owl-carousel-category">
+                <div class="item">
+                    <div class="category-item">
+                        <a href="{{url_for('courses')}}">
+                        <img class="img-fluid" src="{{url_for('static', filename='img/s1.png')}}" alt="">
+                        <h6>Math</h6>
+                        <p>74,853 views</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-item">
+                        <a href="#">
+                        <img class="img-fluid" src="{{url_for('static', filename='img/s2.png')}}" alt="">
+                        <h6>Math by grade</h6>
+                        <p><strong>74K</strong> views</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-item">
+                        <a href="#">
+                        <img class="img-fluid" src="{{url_for('static', filename='img/s3.png')}}" alt="">
+                        <h6>Khan Kids app</h6>
+                        <p><strong>74K</strong> views</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-item">
+                        <a href="#">
+                        <img class="img-fluid" src="{{url_for('static', filename='img/s4.png')}}" alt="">
+                        <h6>Science &amp; engineering <span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></span></h6>
+                        <p><strong>74K</strong> views</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-item">
+                        <a href="#">
+                        <img class="img-fluid" src="{{url_for('static', filename='img/s5.png')}}" alt="">
+                        <h6>Technology Tutorials</h6>
+                        <p><strong>74,853</strong> views</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-item">
+                        <a href="#">
+                        <img class="img-fluid" src="{{url_for('static', filename='img/s6.png')}}" alt="">
+                        <h6>Computing</h6>
+                        <p><strong>74,853</strong> views</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-item">
+                        <a href="#">
+                        <img class="img-fluid" src="{{url_for('static', filename='img/s7.png')}}" alt="">
+                        <h6>Arts &amp; humanities</h6>
+                        <p><strong>74,853</strong> views</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-item">
+                        <a href="#">
+                        <img class="img-fluid" src="{{url_for('static', filename='img/s8.png')}}" alt="">
+                        <h6>Economics & Finance</h6>
+                        <p><strong>74,853</strong> views</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-item">
+                        <a href="#">
+                        <img class="img-fluid" src="{{url_for('static', filename='img/s1.png')}}" alt="">
+                        <h6>Education</h6>
+                        <p><strong>1.4M</strong> views</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-item">
+                        <a href="#">
+                        <img class="img-fluid" src="{{url_for('static', filename='img/s2.png')}}" alt="">
+                        <h6>Test Prep</h6>
+                        <p><strong>1.4M</strong> views</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-item">
+                        <a href="#">
+                        <img class="img-fluid" src="{{url_for('static', filename='img/s3.png')}}" alt="">
+                        <h6>College, Careers &amp; more <span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></span></h6>
+                        <p><strong>74,853</strong> views</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="category-item">
+                        <a href="#">
+                        <img class="img-fluid" src="{{url_for('static', filename='img/s4.png')}}" alt="">
+                        <h6>Lifestyle Advice</h6>
+                        <p><strong>74,853</strong> views</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="video-block section-padding">
+        <div class="row">
+            <div class="col-md-12">
+            <div class="main-title">
+                <div class="btn-group float-right right-action">
+                    <a href="#" class="right-action-link text-gray" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort by <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-check-circle"></i> &nbsp; Recommended</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star"></i> &nbsp; Top Rated</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-signal"></i> &nbsp; Trending</a>
+                    </div>
+                </div>
+                <h6>Recommended Courses</h6>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/v1.png')}}" alt=""></a>
+                    <div class="time">3:50</div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages of Lorem</a>
+                    </div>
+                    <div class="video-page text-success">
+                        Education  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M Completed Course
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/v2.png')}}" alt=""></a>
+                    <div class="time">3:50</div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages (Topic)</a>
+                    </div>
+                    <div class="video-page text-success">
+                    Math (category)  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M Completed Course 
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/v3.png')}}" alt=""></a>
+                    <div class="time">3:50</div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages of Lorem</a>
+                    </div>
+                    <div class="video-page text-danger">
+                        Unknown  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Unverified"><i class="fas fa-frown text-danger"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M Completed Course
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/v4.png')}}" alt=""></a>
+                    <div class="time">3:50</div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages of Lorem</a>
+                    </div>
+                    <div class="video-page text-success">
+                        Science and engineering  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M Completed Course
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/v5.png')}}" alt=""></a>
+                    <div class="time">3:50</div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages of Lorem</a>
+                    </div>
+                    <div class="video-page text-success">
+                        Test Prep  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M Completed Course
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/v6.png')}}" alt=""></a>
+                    <div class="time">3:50</div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages of Lorem</a>
+                    </div>
+                    <div class="video-page text-danger">
+                        Unknown  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Unverified"><i class="fas fa-frown text-danger"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M Completed Course
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/v7.png')}}" alt=""></a>
+                    <div class="time">3:50</div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages of Lorem</a>
+                    </div>
+                    <div class="video-page text-success">
+                        Computing  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M Completed Course
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/v8.png')}}" alt=""></a>
+                    <div class="time">3:50</div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages of Lorem</a>
+                    </div>
+                    <div class="video-page text-success">
+                        Economics and Finance  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M Completed Course
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <hr class="mt-0">
+    <div class="video-block section-padding">
+        <div class="row">
+            <div class="col-md-12">
+            <div class="main-title">
+                <div class="btn-group float-right right-action">
+                    <a href="#" class="right-action-link text-gray" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort by <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-check-circle"></i> &nbsp; Recommended</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star"></i> &nbsp; Top Rated</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-signal"></i> &nbsp; Subscribed</a>
+                    </div>
+                </div>
+                <h6>Recommended Libraries</h6>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="channels-card">
+                <div class="channels-card-image">
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/library/khan academy logo.jpg')}}" alt=""></a>
+                    <div class="channels-card-image-btn"><button type="button" class="btn btn-outline-danger btn-sm">Subscribe <strong>1.4M</strong></button></div>
+                </div>
+                <div class="channels-card-body">
+                    <div class="channels-title">
+                        <a href="#">Khan Academy</a>
+                    </div>
+                    <div class="channels-view">
+                        382,323 subscribers
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="channels-card">
+                <div class="channels-card-image">
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/library/byjus.jpg')}}" alt=""></a>
+                    <div class="channels-card-image-btn"><button type="button" class="btn btn-outline-danger btn-sm">Subscribe <strong>1.4M</strong></button></div>
+                </div>
+                <div class="channels-card-body">
+                    <div class="channels-title">
+                        <a href="#">Byju</a>
+                    </div>
+                    <div class="channels-view">
+                        382,323 subscribers
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="channels-card">
+                <div class="channels-card-image">
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/library/2mc2.png')}}" alt=""></a>
+                    <div class="channels-card-image-btn"><button type="button" class="btn btn-outline-secondary btn-sm">Subscribed <strong>1.4M</strong></button></div>
+                </div>
+                <div class="channels-card-body">
+                    <div class="channels-title">
+                        <a href="#">2 Minute Classroom <span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"><i class="fas fa-check-circle"></i></span></a>
+                    </div>
+                    <div class="channels-view">
+                        382,323 subscribers
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="channels-card">
+                <div class="channels-card-image">
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/library/7 active.jpg')}}" alt=""></a>
+                    <div class="channels-card-image-btn"><button type="button" class="btn btn-outline-danger btn-sm">Subscribe <strong>1.4M</strong></button></div>
+                </div>
+                <div class="channels-card-body">
+                    <div class="channels-title">
+                        <a href="#">7 Active</a>
+                    </div>
+                    <div class="channels-view">
+                        382,323 subscribers
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="video-block section-padding">
+        <div class="row">
+            <div class="col-md-12">
+            <div class="main-title">
+                <div class="btn-group float-right right-action">
+                    <a href="#" class="right-action-link text-gray" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort by <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-check-circle"></i> &nbsp; Recommended</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-star"></i> &nbsp; Top Rated</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-fw fa-signal"></i> &nbsp; Trending</a>
+                    </div>
+                </div>
+                <h6>Recommended Modules</h6>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/m1.png')}}" alt=""></a>
+                    <div class="time">3:50</div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages(Topic)</a>
+                    </div>
+                    <div class="video-page text-success">
+                        Technology Tutorials(category)  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/m2.png')}}" alt=""></a>
+                    <div class="time"><i class="fas fa-folder text-gray"></i></div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages of Lorem</a>
+                    </div>
+                    <div class="video-page text-success">
+                        Education  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-eye"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/m3.png')}}" alt=""></a>
+                    <div class="time"><i class="fas fa-book text-gray"></i></div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages of Lorem</a>
+                    </div>
+                    <div class="video-page text-danger">
+                        Unknown  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Unverified"><i class="fas fa-frown text-danger"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/m4.png')}}" alt=""></a>
+                    <div class="time">3:50</div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages of Lorem</a>
+                    </div>
+                    <div class="video-page text-success">
+                        Computing  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/m5.png')}}" alt=""></a>
+                    <div class="time"><i class="fas fa-headphones-alt text-gray"></i></div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages of Lorem</a>
+                    </div>
+                    <div class="video-page text-success">
+                        Education  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/m6.png')}}" alt=""></a>
+                    <div class="time"><i class="fas fa-video text-gray"></i> 3:50</div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages of Lorem</a>
+                    </div>
+                    <div class="video-page text-danger">
+                        Education  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Unverified"><i class="fas fa-frown text-danger"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/m7.png')}}" alt=""></a>
+                    <div class="time">3:50</div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages of Lorem</a>
+                    </div>
+                    <div class="video-page text-success">
+                        Education  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="video-card">
+                <div class="video-card-image">
+                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
+                    <a href="#"><img class="img-fluid" src="{{url_for('static', filename='img/m8.png')}}" alt=""></a>
+                    <div class="time">3:50</div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-title">
+                        <a href="#">There are many variations of passages of Lorem</a>
+                    </div>
+                    <div class="video-page text-success">
+                        Education  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fas fa-check-circle text-success"></i></a>
+                    </div>
+                    <div class="video-view">
+                        1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- /#wrapper -->
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+<i class="fas fa-angle-up"></i>
+</a>
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="{{url_for('login')}}">Logout</a>
+        </div>
+    </div>
+    </div>
+</div>
+
+{% endblock %}
