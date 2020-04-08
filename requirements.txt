@@ -32,3 +32,4 @@ w3lib==1.21.0
 websockets==8.1
 Werkzeug==0.16.0
 coverage==5.0.4
+gunicorn
